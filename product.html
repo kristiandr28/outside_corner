@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> <!-- Menambahkan Poppins -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif; /* Mengganti font menjadi Poppins */
+      font-weight: 400; /* Mengatur ketebalan font menjadi regular */
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .menu {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(173, 216, 230, 0.9); /* Semi-transparent background */
+    color: white;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+
+  .menu.active {
+    right: 0;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu li {
+    padding: 15px;
+  }
+
+body {
+      font-family: 'Poppins', sans-serif; /* Mengganti font menjadi Poppins */
+      font-weight: 400;
+      background-color: #ffffff; /* Mengatur ketebalan font menjadi regular */
+}
+
+/* Optional custom styling if needed */
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- Header/Navbar -->
+  <header class="bg-white py-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <div class="text-2xl font-bold">OUTSIDE CORNER</div> <!-- Teks sudah bold -->
+      <div id="burger-btn" class="md:hidden text-3xl font-bold">☰</div> <!-- Ikon burger juga bold -->
+      <div id="menu-overlay" class="overlay"></div>
+    
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex space-x-6">
+        <li><a href="index.html" class="text-black text-xl font-bold transition-all duration-300 hover:bg-black hover:text-white py-2 px-4 transform hover:scale-105">Home</a></li>
+        <li><a href="product.html" class="text-black text-xl font-bold transition-all duration-300 hover:bg-black hover:text-white py-2 px-4 transform hover:scale-105">Product</a></li>
+        <li><a href="about.html" class="text-black text-xl font-bold transition-all duration-300 hover:bg-black hover:text-white py-2 px-4 transform hover:scale-105">About</a></li>
+        <li><a href="contactus.html" class="text-black text-xl font-bold transition-all duration-300 hover:bg-black hover:text-white py-2 px-4 transform hover:scale-105">Contact</a></li>
+        <li><a href="news.html" class="text-black text-xl font-bold transition-all duration-300 hover:bg-black hover:text-white py-2 px-4 transform hover:scale-105">News</a></li>
+        <li><a href="rider.html" class="text-black text-xl font-bold transition-all duration-300 hover:bg-black hover:text-white py-2 px-4 transform hover:scale-105">Rider</a></li>
+        <li><a href="sale.html" class="text-black text-xl font-bold transition-all duration-300 hover:bg-black hover:text-white py-2 px-4 transform hover:scale-105">Sales</a></li>
+      </ul>
+    
+      <div class="hidden md:flex space-x-2">
+        <a href="chart.html">
+          <button class="bg-transparent text-black hover:bg-blue-100 p-2 rounded-full transition-colors duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18l-2 9H5L3 3zm0 0l2 9m0 0h12m-6 2a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm12-1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+            </svg>
+          </button>
+        </a>
+        <a href="login.html"><button class="bg-gray-400 rounded-lg text-xl font-bold text-white py-2 px-6 transition-colors duration-300 hover:bg-gray-600">Login</button></a> <!-- Tombol login juga bold -->
+      </div>
+    </div>
+    
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="menu-dropdown" class="menu">
+      <ul class="space-y-2">
+        <li><a href="index.html" class="text-white">Home</a></li>
+        <li><a href="product.html" class="text-white">Product</a></li>
+        <li><a href="about.html" class="text-white">About</a></li>
+        <li><a href="contactus.html" class="text-white">Contact</a></li>
+        <li><a href="news.html" class="text-white">News</a></li>
+        <li><a href="rider.html" class="text-white">Rider</a></li>
+        <li><a href="sales.html" class="text-white">Sales</a></li>
+        <li>
+          <a href="chart.html">
+            <button class="bg-transparent text-white hover:bg-blue-300 p-2 rounded-full transition-colors duration-300">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18l-2 9H5L3 3zm0 0l2 9m0 0h12m-6 2a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM5 20a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm12-1.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+              </svg>
+            </button>
+          </a>
+        </li>
+      </ul>
+      <div class="mt-4">
+        <a href="login.html">
+          <button class="w-full bg-white text-black py-2 hover:bg-blue-300 transition-colors duration-300">
+          Login
+        </button></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="relative bg-cover bg-center h-[60vh]" style="background-image: url('https://images.unsplash.com/photo-1470072658328-919ef048ae6f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <a href="product.html" class="absolute inset-0 h-full w-full transition-opacity duration-300 hover:opacity-75"></a>
+  </section>
+
+    <!-- All Filter Button -->
+    <section class="container mx-auto mt-12 px-4 max-w-screen-xl">
+      <div class="flex flex-col md:flex-row justify-between items-center bg-white p-4 shadow-md space-y-4 md:space-y-0 shadow-lg gap-4">
+        <!-- All Filter Button with Filter Icon -->
+        <button id="all-filter-button" class="p-2 bg-gray-400 text-white rounded-md flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L15 11.414V18a1 1 0 01-.447.894l-4 2A1 1 0 019 20v-8.586L3.293 6.707A1 1 0 013 6V4z"></path>
+          </svg>
+          All Filter
+        </button>
+    
+        <!-- Modern Search Bar with Icon -->
+        <div class="relative flex-1">
+          <input type="text" id="search" class="p-2 pl-10 border rounded-md w-full bg-gray-100 focus:bg-white transition-all duration-300 ease-in-out" placeholder="Search products...">
+          <svg class="w-5 h-5 text-gray-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16.65 10.65a6 6 0 11-12 0 6 6 0 0112 0z"></path>
+          </svg>
+        </div>
+    
+        <!-- Sorting Option -->
+        <div class="flex items-center">
+          <label for="sort" class="mr-2">Sort by:</label>
+          <select id="sort" class="p-2 border rounded-md">
+            <option value="default">Default</option>
+            <option value="price_low_high">Price: Low to High</option>
+            <option value="price_high_low">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sidebar Filter Modal on Left Side with Transition -->
+    <div id="filter-sidebar" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 transition-opacity duration-300 ease-in-out">
+      <div class="absolute left-0 top-0 w-80 h-full bg-white shadow-lg p-4 transform -translate-x-full transition-transform duration-500 ease-in-out" id="sidebar-content">
+        <button id="close-filter-sidebar" class="text-red-500 mb-4">Close</button>
+        
+        <!-- Filter by Category -->
+        <div class="mb-4">
+          <label for="category" class="block mb-2">Filter by Category:</label>
+          <select id="category" class="p-2 border rounded-md w-full">
+            <option value="all">All</option>
+            <option value="clothing">Clothing</option>
+            <option value="footwear">Footwear</option>
+            <option value="accessories">Accessories</option>
+          </select>
+        </div>
+    
+        <!-- Filter by Brand -->
+        <div class="mb-4">
+          <label for="brand" class="block mb-2">Filter by Brand:</label>
+          <select id="brand" class="p-2 border rounded-md w-full">
+            <option value="all_brands">All Brands</option>
+            <option value="nike">Nike</option>
+            <option value="adidas">Adidas</option>
+            <option value="puma">Puma</option>
+            <option value="gucci">Gucci</option>
+          </select>
+        </div>
+    
+        <!-- Filter by Size -->
+        <div class="mb-4">
+          <label for="size" class="block mb-2">Filter by Size:</label>
+          <select id="size" class="p-2 border rounded-md w-full">
+            <option value="all_sizes">All Sizes</option>
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="xl">XL</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  <!-- Product List Section -->
+  <section class="container mx-auto mt-12 px-4 max-w-screen-xl">
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <!-- Product Card -->
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1624526690424-d6324e0662b6?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Product Name</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$19.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <!-- Repeat Product Card for more products -->
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1471575266009-b52cd3a488c8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Another Product</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$29.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <!-- More Product Cards -->
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1616470449751-a33290863c1f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Another Product</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$29.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Another Product</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$29.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1548778943-5bbeeb1ba6c1?q=80&w=1954&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Product Name</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$19.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1485145782098-4f5fd605a66b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Product Name</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$19.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Product Name</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$19.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="product-card bg-white rounded-lg shadow-sm overflow-hidden transition-transform transform hover:scale-105">
+        <a href="productdetail.html" class="block">
+          <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product Image" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col space-y-2">
+            <h3 class="text-gray-900 text-lg font-semibold">Product Name</h3>
+            <p class="text-gray-500 text-sm">Brand</p>
+            <p class="text-gray-800 text-lg font-bold">$19.99</p>
+            <div class="flex space-x-2 mt-3">
+              <!-- Buy Button -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors text-sm font-medium">Buy</button>
+              <!-- Add to Cart Icon -->
+              <button class="w-1/2 bg-gray-600 text-white py-2 rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h18l-2 13H5L3 3zm4 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <!-- Additional Product Cards as needed -->
+    </div>
+  </section>
+  
+    
+      <!-- Pagination Section -->
+      <div class="flex justify-center mt-8">
+        <nav>
+          <ul class="flex space-x-4">
+            <li>
+              <a href="#" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors">Previous</a>
+            </li>
+            <li>
+              <a href="#" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors">1</a>
+            </li>
+            <li>
+              <a href="#" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors">2</a>
+            </li>
+            <li>
+              <a href="#" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors">3</a>
+            </li>
+            <li>
+              <a href="#" class="px-4 py-2 border border-gray-300 rounded hover:bg-gray-100 transition-colors">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  <footer class="bg-gray-600 text-white py-8 mt-8 text-center w-full">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+            <div>
+                <h3 class="font-bold text-lg mb-2">Menu</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Product</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">New</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Rider</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-2">Contact Us</h3>
+                <p>123 Main Street,<br>City, Country</p>
+                <p>Email: info@yourcompany.com<br>Phone: +1 (123) 456-7890</p>
+                
+                <h3 class="font-bold text-lg mb-2 mt-4">Follow Us</h3>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" target="_blank" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600 transition">
+                        <i class="fab fa-facebook fa-lg"></i>
+                    </a>
+                    <a href="#" target="_blank" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600 transition">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="#" target="_blank" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600 transition">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                    <a href="#" target="_blank" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600 transition">
+                        <i class="fab fa-linkedin fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3 class="font-bold text-lg mb-2">Our Location</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509666!2d144.9537353153551!3d-37.8162799797519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0b8c8a89%3A0x5045675218ceed6!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1632780991536!5m2!1sen!2sus"
+                    width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  
+
+  <script>
+const burgerBtn = document.getElementById("burger-btn");
+const menuDropdown = document.getElementById('menu-dropdown');
+const menuOverlay = document.getElementById('menu-overlay');
+
+burgerBtn.addEventListener("click", () => {
+  menuDropdown.classList.toggle('active');
+  menuOverlay.classList.toggle('active');
+  if (menuDropdown.classList.contains('active')) {
+    document.body.style.overflow = 'hidden'; // Mencegah scroll saat menu terbuka
+  } else {
+    document.body.style.overflow = ''; // Mengizinkan scroll saat menu ditutup
+  }
+});
+
+// Menutup menu saat mengklik overlay
+menuOverlay.addEventListener("click", () => {
+  menuDropdown.classList.remove('active');
+  menuOverlay.classList.remove('active');
+  document.body.style.overflow = ''; // Mengizinkan scroll saat menu ditutup
+});
+
+    const allFilterButton = document.getElementById("all-filter-button");
+  const filterSidebar = document.getElementById("filter-sidebar");
+  const sidebarContent = document.getElementById("sidebar-content");
+  const closeFilterSidebar = document.getElementById("close-filter-sidebar");
+
+  // Open the sidebar with transition
+  allFilterButton.onclick = function () {
+    filterSidebar.classList.remove("hidden");
+    setTimeout(() => {
+      sidebarContent.classList.remove("-translate-x-full");
+    }, 10); // Small delay to ensure transition starts
+  };
+
+  // Close the sidebar with transition
+  closeFilterSidebar.onclick = function () {
+    sidebarContent.classList.add("-translate-x-full");
+    setTimeout(() => {
+      filterSidebar.classList.add("hidden");
+    }, 500); // Delay matches the transition duration
+  };
+
+  // Hide sidebar when clicking outside of it
+  filterSidebar.onclick = function (e) {
+    if (e.target === filterSidebar) {
+      sidebarContent.classList.add("-translate-x-full");
+      setTimeout(() => {
+        filterSidebar.classList.add("hidden");
+      }, 500);
+    }
+  };
+  </script>
+</body>
+
+</html>
